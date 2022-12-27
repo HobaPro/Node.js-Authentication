@@ -1,0 +1,20 @@
+{
+  "name": "project_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HobaPro",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.1",
+    "node-steam-openid": "^1.0.1",
+    "path": "^0.12.7",
+    "steam-openid": "^1.1.1"
+  }
+}
