@@ -9,7 +9,7 @@ app.use(cookieParser());
 
 //app.use(express.static(__dirname + '/assets'));
 
-const authRouter = require("./Routes/router.auth");
+const authRouter = require("./api/routes/auth.route");
 
 app.use(authRouter);
 

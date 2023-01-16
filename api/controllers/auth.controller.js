@@ -1,5 +1,5 @@
 const SteamAuth = require("node-steam-openid");
-const Model_Auth = require("../Models/model.auth");
+const Auth_Model = require("../models/auth.model");
 
 steam = new SteamAuth({
     realm: "http://localhost:5000", // Site name displayed to users on logon
@@ -7,12 +7,12 @@ steam = new SteamAuth({
     apiKey: "8293F8D205DDC60DC8D42149F630E691" // Steam API key
 });
 
-class Controller_Auth{
+class Auth_Controller{
 
     static async CreateAccount(req, res){
         res.contentType('application/json');
 
-        const response = await Model_Auth.CreateAccount(req.body.userName, req.body.email, req.body.password, true);
+        const response = await Auth_Model.CreateAccount(req.body.userName, req.body.email, req.body.password, true);
         if(!response) res.status(400).send(response);
         else res.status(200).send(response);
     }
@@ -20,7 +20,7 @@ class Controller_Auth{
     static async LogIn(req, res){
         res.contentType('application/json');
 
-        const response = await Model_Auth.LogIn(req.body.email, req.body.password);
+        const response = await Auth_Model.LogIn(req.body.email, req.body.password);
         if(!response) res.status(400).send(response);
         else res.status(200).send(response);
     }
@@ -28,7 +28,7 @@ class Controller_Auth{
     static async LogOut(req, res){
         res.contentType('application/json');
 
-        const isLogOut = await Model_Auth.LogOut();
+        const isLogOut = await Auth_Model.LogOut();
         if(!isLogOut) res.status(400).send(isLogOut);
         else res.status(200).send(isLogOut);
     }
@@ -43,7 +43,7 @@ class Controller_Auth{
         try{
             const user = await steam.authenticate(req);
             
-            const response = await Model_Auth.CreateAccount(user.username, user.username, user.steamid, true);
+            const response = await Auth_Model.CreateAccount(user.username, user.username, user.steamid, true);
             if(!response) res.status(400).send(response);
             else res.status(200).send(response);
 
@@ -53,4 +53,4 @@ class Controller_Auth{
     }
 }
 
-module.exports = Controller_Auth;
+module.exports = Auth_Controller;

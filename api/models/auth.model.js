@@ -1,8 +1,8 @@
 const DB = require("../db/db");
-const UserCollection = require("../db/users_collection");
+const UserCollection = require("../db/user.collection");
 const bcrypt = require('bcrypt');
 
-class Model_Auth{
+class Auth_Model{
 
     static async CreateAccount(userName, email, password, verified){
         try{
@@ -70,4 +70,4 @@ class Model_Auth{
     }
 }
 
-module.exports = Model_Auth;
+module.exports = Auth_Model;
